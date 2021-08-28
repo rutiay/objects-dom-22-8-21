@@ -1,3 +1,36 @@
+var taskArray = [
+    { name: "clean room", isCompleted: true, id: Math.floor(Math.random() * 2000 + 1) },
+    { name: "homework", isCompleted: false, id: Math.floor(Math.random() * 2000 + 1) },
+    { name: "buy", isCompleted: true, id: Math.floor(Math.random() * 2000 + 1) },
+    { name: "sell", isCompleted: true, id: Math.floor(Math.random() * 2000 + 1) },
+    { name: "sleep", isCompleted: false, id: Math.floor(Math.random() * 2000 + 1) }
+]
+
+var taskDiv = document.getElementById("taskDiv");
+for(var i = 0; i< taskArray.length; i++){
+    taskDiv.innerHTML += `<p class="taskPara">${taskArray[i].name}: ${taskArray[i].isCompleted}.</p>`;
+}
+
+var button = document.getElementById("taskBtn");
+var newTaskName = document.getElementById("userTaskName");
+var taskCompleted = document.getElementsByClassName("taskPara");
+
+for (var i = 0; i < taskCompleted.length; i++) {
+    if(taskArray[i].isCompleted == true){
+        taskCompleted[i].style.background = "red";
+    }    
+}
+
+button.onclick = function(){
+    var task = {};
+    task.name = newTaskName.value;
+    task.isCompleted = taskCompleted.value;
+    task.id = Math.floor(Math.random() * 2000 + 1);
+    taskArray.push(task);
+    taskDiv.innerHTML += `${task.name}: ${task.isCompleted}<br>`
+}
+
+
 //! 2
 
 var moviesArray = [
@@ -118,7 +151,7 @@ var userCountry = document.getElementById("userCountry");
 var userFlag = document.getElementById("userFlag");
 var userAge = document.getElementById("userAge");
 
-document.getElementById("createButton").onclick = function (){
+document.getElementById("createButton").onclick = function () {
     var people = {};
     people.name = userFullName.value;
     people.country = userCountry.value;
